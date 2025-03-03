@@ -1,0 +1,12 @@
+---
+layout: layout.njk
+title: Projects
+---
+<section id="projects-section">
+  <h2>Projects</h2>
+  <div class="projects-list">
+    {% for project in projects %}
+      {% include "project-card.njk"%}
+    {% endfor %}
+  </div>
+</section>

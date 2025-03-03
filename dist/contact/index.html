@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me</title>
+  <link rel="stylesheet" href="/CSE-134B-HW4-SSG/dist/styles/style.css">
+</head>
+<body>
+  <header>
+    <header>
+  <nav>
+    <ul class="main-nav">
+      <li><a href="/CSE-134B-HW4-SSG/dist/index.html">Home</a></li>
+      <li><a href="/CSE-134B-HW4-SSG/dist/about-me/index.html">About Me</a></li>
+      <li><a href="/CSE-134B-HW4-SSG/dist/experience/index.html">Experience</a></li>
+      <li><a href="/CSE-134B-HW4-SSG/dist/projects/index.html">Projects</a></li>
+      <li><a href="/CSE-134B-HW4-SSG/dist/contact/index.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+  </header>
+
+  <main>
+    <section id="contact-page">
+  <h2>Contact Me</h2>
+  <form action="https://httpbin.org/post" method="POST">
+    <fieldset>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" minlength="2" maxlength="50"
+             pattern="^[A-Za-z\s'\-]+$" placeholder="Joe Mama" required>
+      <output class="error-message"></output>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="joe@email.com"
+             required>
+      <output class="error-message"></output>
+    </fieldset>
+
+    <fieldset>
+      <label for="message">Comments:</label>
+      <textarea id="message" name="message" minlength="10" maxlength="300"
+                placeholder="Leave me a message!" pattern="^[a-zA-Z0-9\s.,!?'-]+$" required></textarea>
+      <output class="error-message"></output>
+      <output id="info-message"></output>
+    </fieldset>
+
+    <input type="hidden" name="possible_bot" value="true">
+    <button type="submit">Submit</button>
+  </form>
+</section>
+
+<script>
+  // Form Validation and Error Logging Script
+  let formErrors = [];
+  function logError(field, message) {
+    formErrors.push({
+      field: field.name || field.id,
+      message: message,
+      value: field.value
+    });
+  }
+  function validateField(field) {
+    if (!field.checkValidity()) {
+      let message = field.validationMessage;
+      if (field.id === 'name') {
+        field.nextElementSibling.textContent = "Please enter a valid name!";
+      } else if (field.type === 'email') {
+        field.nextElementSibling.textContent = "Please enter a valid email address!";
+      } else {
+        field.nextElementSibling.textContent = field.validationMessage;
+      }
+      field.nextElementSibling.style.color = "red";
+      logError(field, message);
+    } else {
+      field.nextElementSibling.textContent = "";
+    }
+  }
+  document.querySelectorAll("input, textarea").forEach(field => {
+    field.addEventListener("input", () => validateField(field));
+  });
+  document.querySelector("form").addEventListener("submit", function () {
+    document.querySelectorAll("input, textarea").forEach(field => validateField(field));
+    if (formErrors.length > 0) {
+      let errorField = document.querySelector("input[name='form-errors']");
+      if (!errorField) {
+        errorField = document.createElement("input");
+        errorField.type = "hidden";
+        errorField.name = "form-errors";
+        this.appendChild(errorField);
+      }
+      errorField.value = JSON.stringify(formErrors);
+    }
+  });
+</script>
+
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Timothy Lam</p>
+  </footer>
+</body>
+</html>

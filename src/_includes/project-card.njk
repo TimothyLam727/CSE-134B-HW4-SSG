@@ -1,0 +1,11 @@
+<div class="project-card">
+  <article>
+    <a href="{{ project.url | default('#') }}">{{ project.title }}</a>
+    <p>{{ project.year }} | <code>{{ project.technologies }}</code></p>
+  </article>
+  <ul>
+    {% for detail in project.details %}
+      <li>{{ detail }}</li>
+    {% endfor %}
+  </ul>
+</div>

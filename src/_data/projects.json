@@ -1,0 +1,33 @@
+[
+    {
+      "title": "CodeLog",
+      "url": "https://timothy0727.github.io/Codelog/home_projects_page.html",
+      "year": "2024",
+      "technologies": "HTML CSS JS",
+      "details": [
+        "Collaborated with a team of 10 to design and implement a portfolio web app for coders.",
+        "Developed a user-friendly journal application for code documentation and tracking."
+      ]
+    },
+    {
+      "title": "tswift",
+      "url": "#",
+      "year": "2023",
+      "technologies": "Python",
+      "details": [
+        "Built a search engine for Taylor Swift’s songs using Python, Numpy, and BabyPandas.",
+        "Implemented a recommendation algorithm based on machine learning."
+      ]
+    },
+    {
+      "title": "Goals & Gold: The Impact of Fame on Striker Salaries",
+      "url": "#",
+      "year": "2024",
+      "technologies": "Python",
+      "details": [
+        "Conducted statistical analysis on striker salaries, performance, and popularity.",
+        "Used Ordinary Least Squares regression models and data visualization techniques."
+      ]
+    }
+  ]
+  
